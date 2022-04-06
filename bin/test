@@ -21,7 +21,7 @@ export COMPOSER_PROCESS_TIMEOUT=0
 echo "Trying to auto-detect test framework; first match will be found. You may use composer script 'test', or app.json, to specify what to run." >&2
 # all of the tests below use `grep … > /dev/null` instead if `grep -q` because the latter will occasionally cause the inputting program to fail, see #388
 # 'composer run-script -l' prints a "scripts:" header on stderr...
-if composer run-script -l 2> /dev/null | grep -- "^\s*test\b" > /dev/null; then
+if composer run-script -l a 2> /dev/null | grep -- "^\s*test\b" > /dev/null; then
 	echo "Script 'composer test' found, executing..." >&2
 	composer run-script test
 elif composer exec -l | grep -- "^-\s*codecept\b" > /dev/null; then
